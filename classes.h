@@ -138,7 +138,7 @@ public:
         tone = 11;
     }
     string battlecry() {return "Ti schiaccero' come un insetto!!!";}
-    string type() {return "Guerriero Pesante";}
+    string type() {return "Combattente Pesante";}
 };
 
 class Lanciere: public Soldier {
