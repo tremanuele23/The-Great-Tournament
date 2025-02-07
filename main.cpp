@@ -10,9 +10,33 @@ int main()
     cout<<"\n\n\t\t\tPremi un tasto per continuare: ";
     int a = getch();
     system("CLS");
-    cout<<"Benvenuto, giocatore! E' arrivato il momento di creare il tuo personaggio.\n\n";
+    cout<<"Benvenuto, giocatore! Desideri che ti spieghi i fondamenti del gioco? Digita 0 per saltare il tutorial. ";
+    bool tutorial;
+    cin>>tutorial;
+    cin.ignore();
+    system("CLS");
+    if(tutorial) {
+        color(6);  cout<<"INFORMAZIONI UTILI\n\n\n"; color(7);
+        cout<<"Questo gioco e' un RPG basato su combattimenti a turni tra te e guerrieri controllati dalla CPU.\n\n";
+        cout<<"Quando crei il tuo personaggio, potrai scegliere tra 7 classi diverse, ciascuna delle quali ha i suoi vantaggi e svantaggi.\n\n";
+        cout<<"Ogni giocatore dispone di un inventario, che alla creazione del personaggio e' ovviamente vuoto, e inizia a giocare con un arma di default che dipende dalla classe scelta.\n\n";
+        cout<<"Quando attacchi, infliggerai al nemico un colpo dal valore pari al danno dell'arma che impugni + un valore CASUALE generato in un intervallo i cui estremi cambiano per ciascuna classe.\n\n";
+        cout<<"Non c'e' molto altro da dire, avrai tutte le informazioni che ti serviranno per la scelta nella schermata successiva.\n";
+        cout<<"\n\n\n\nPremi un tasto per continuare: ";
+        a = getch();
+        system("CLS");
+    }
 
-    cout<<"Seleziona la classe:\n1. Cavaliere\n2. Spadaccino\n3. Fante\n4. Combattente Pesante\n5. Lanciere\n6. Alabardiere\n7. Mercenario\n\n";
+    cout<<"E' arrivato il momento di creare il tuo personaggio.\n\n";
+
+    cout<<"Seleziona la classe:";
+    cout<<"\n1. Cavaliere           { ATK Range: [-10; 15], Health Points = 180,       Arma iniziale: SPADA E SCUDO (30) }";
+    cout<<"\n2. Spadaccino          { ATK Range: [-5; 10],  Health Points = 120,    Arma iniziale: SPADA A DUE MANI (35) }";
+    cout<<"\n3. Fante               { ATK Range: [0; 7],    Health Points = 150,    Arma iniziale: SPADA A UNA MANO (25) }";
+    cout<<"\n4. Combattente Pesante { ATK Range: [-20; 0],  Health Points = 100,  Arma iniziale: MARTELLO DA GUERRA (70) }";
+    cout<<"\n5. Lanciere            { ATK Range: [-5; 15],  Health Points = 140,              Arma iniziale: LANCIA (45) }";
+    cout<<"\n6. Alabardiere         { ATK Range: [-15; 7],  Health Points = 110,            Arma iniziale: ALABARDA (60) }";
+    cout<<"\n7. Mercenario          { ATK Range: [10; 25],  Health Points = 150,         Arma iniziale: SPADA CORTA (15) }\n\n";
     int choice;
     do
     {
@@ -21,7 +45,7 @@ int main()
         cin.ignore();
     }
     while(choice<=0||choice>7);
-    cout<<"\n\n\n\nOttima scelta. Premi un tasto per procedere. ";
+    cout<<"\n\n\n\nScelta registrata. Premi un tasto per procedere. ";
     a = getch();
     system("CLS");
     cout<<"Inserisci il nome del tuo personaggio: ";
