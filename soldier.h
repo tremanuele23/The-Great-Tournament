@@ -93,7 +93,7 @@ public:
         cout<<"Consumabili di "<<name<<" (size = "<<consumables.size()<<"):\n";
         color(7);
         for(int i = 0; i<consumables.size(); i++) {
-            cout<<"["<<i<<"]: "<<consumables[i].getname()<<" (ATK Bonus: "<<consumables[i].getATKboost()<<", HP Bonus: "<<consumables[i].getHPboost()<<")";
+            cout<<"["<<i<<"]: "<<consumables[i].getname()<<" (HP Bonus: "<<consumables[i].getHPboost()<<")";
             if(i!=consumables.size()-1)
                 cout<<";";
             cout<<endl;
@@ -172,9 +172,7 @@ public:
             if(HP+c.getHPboost()<=maxHP)
                 HP+=c.getHPboost();
             else if(HP!=maxHP) {HP=maxHP;}
-            cw.setdamage(cw.getdamage()+c.getATKboost());
             cout<<"\nHP: "<<HP<<"/"<<maxHP<<endl;
-            cout<<"Danno dell'arma impugnata ("<<cw.getname()<<"): "<<cw.getdamage()<<endl;
             remove_from_consumables(c);
         }
         else

@@ -35,19 +35,15 @@ public:
 class Consumabile: public Item {
 protected:
     int HP_boost;
-    int ATK_boost;
 public:
-    Consumabile() {HP_boost=0; ATK_boost = 0; type = "Consumabile";}
-    Consumabile(string n, int lf, int atk): Item(n) {HP_boost = lf; ATK_boost=atk; type="Consumabile";}
+    Consumabile() {HP_boost=0; type = "Consumabile";}
+    Consumabile(string n, int lf): Item(n) {HP_boost = lf; type="Consumabile";}
 
     void setHPboost(int x) {HP_boost=x;}
-    void setATKboost(int x) {ATK_boost=x;}
-    int getATKboost() {return ATK_boost;}
     int getHPboost() {return HP_boost;}
     void showstats() {
         cout<<"Consumabile: "<<name<<endl;
         cout<<"Boost vita: "<<HP_boost<<endl;
-        cout<<"Boost attacco: "<<ATK_boost<<endl<<endl;
     }
 
 
