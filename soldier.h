@@ -34,7 +34,7 @@ protected:
     int low_mod;
     int up_mod;
 public:
-    vector<Consumabile> consumables;
+    vector<Consumabile> consumabili;
     vector<Weapon> weaps;
     int HP;
     Soldier() {
@@ -43,7 +43,7 @@ public:
         name = " ";
         cw=noweapon;
         weaps.empty();
-        consumables.empty();
+        consumabili.empty();
         low_mod = 0;
         up_mod = 0;
     }
@@ -55,26 +55,26 @@ public:
         up_mod = u;
         low_mod = l;
         weaps.empty();
-        consumables.empty();
+        consumabili.empty();
 
     }
     void svuotainventario() {
         weaps.empty();
-        consumables.empty();
+        consumabili.empty();
     }
-    void add_to_weapons(Weapon pippo) {
+    void add_to_inventory(Weapon pippo) {
         weaps.push_back(pippo);
         }
-    void add_to_consumables(Consumabile pippo) {
-        consumables.push_back(pippo);
+    void add_to_inventory(Consumabile pippo) {
+        consumabili.push_back(pippo);
         }
-    void remove_from_weapons(Weapon pippo) {
+    void remove_from_inventory(Weapon pippo) {
         int pos = posizione(weaps, pippo);
         weaps.erase(weaps.begin()+pos);
     }
-    void remove_from_consumables(Consumabile pippo) {
-        int pos = posizione(consumables, pippo);
-        consumables.erase(consumables.begin()+pos);
+    void remove_from_inventory(Consumabile pippo) {
+        int pos = posizione(consumabili, pippo);
+        consumabili.erase(consumabili.begin()+pos);
     }
     void showweaps() {
         color(tone);
@@ -88,13 +88,13 @@ public:
         }
         cout<<endl;
     }
-    void showconsumables() {
+    void showconsumabili() {
         color(tone);
-        cout<<"Consumabili di "<<name<<" (size = "<<consumables.size()<<"):\n";
+        cout<<"Consumabili di "<<name<<" (size = "<<consumabili.size()<<"):\n";
         color(7);
-        for(int i = 0; i<consumables.size(); i++) {
-            cout<<"["<<i<<"]: "<<consumables[i].getname()<<" (HP Bonus: "<<consumables[i].getHPboost()<<")";
-            if(i!=consumables.size()-1)
+        for(int i = 0; i<consumabili.size(); i++) {
+            cout<<"["<<i<<"]: "<<consumabili[i].getname()<<" (HP Bonus: "<<consumabili[i].getHPboost()<<")";
+            if(i!=consumabili.size()-1)
                 cout<<";";
             cout<<endl;
         }
@@ -104,15 +104,15 @@ public:
     void showinventory() {
         showweaps();
         cout<<endl;
-        showconsumables();
+        showconsumabili();
     }
 
 
     void equip_weapon(Weapon w) {
         if (posizione(weaps, w)!=-1) {
-            add_to_weapons(cw);
+            add_to_inventory(cw);
             cw = w;
-            remove_from_weapons(w);
+            remove_from_inventory(w);
             cout<<"Arma equipaggiata.\n";
         }
         else
@@ -167,13 +167,13 @@ public:
 
 
     void use(Consumabile c) {
-        if(posizione(consumables, c)!=-1) {
+        if(posizione(consumabili, c)!=-1) {
             cout<<"Hai usato "<<c.getname()<<"!\n";
             if(HP+c.getHPboost()<=maxHP)
                 HP+=c.getHPboost();
             else if(HP!=maxHP) {HP=maxHP;}
             cout<<"\nHP: "<<HP<<"/"<<maxHP<<endl;
-            remove_from_consumables(c);
+            remove_from_inventory(c);
         }
         else
             cout<<"L'oggetto non e' nell'inventario.\n\n\n\n";
