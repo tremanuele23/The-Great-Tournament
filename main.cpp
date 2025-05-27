@@ -114,25 +114,27 @@ case 7:
 
     system("CLS");
     cout<<"Partecipanti al torneo (Fase 1)\n"<<endl;
-
+    int peop = 8;
     Soldier* avversario1;
     Soldier* avversario2;
-    string listanomi[4];
+    Soldier* avversario3;
+    vector <string>listanomi;
     int randval;
-    listanomi[0] = player->getname();
-    for(int i = 1; i<4; i++) {
+    listanomi.push_back(player->getname());
+    for(int i = 1; i<peop; i++) {
         randval=rand()%40;
-        listanomi[i] = allnames[randval];
+        listanomi.push_back(allnames[randval]);
     }
 
 
-    for(int i = 0; i<4; i++) {
+    for(int i = 0; i<peop; i++) {
         cout<<i+1<<". "<<listanomi[i]<<endl;
         if((i+1)%2==0)
             cout<<endl;
 
     }
     cout<<"\nPremi un tasto per procedere. "; a = getch();
+//nemico 1
     randval= rand()%7+1;
     switch(randval) {
     case 1:
@@ -157,69 +159,122 @@ case 7:
         avversario1 = new Mercenario(listanomi[1]);
         break;
 }
-    randval=rand()%(3-2+1)+2;
-    string giannipass= listanomi[randval];
-        randval=rand()%7+1;
-          switch(randval) {
+//nemico 2
+    randval=rand()%7+1;
+    switch(randval) {
             case 1:
-                avversario2 = new Cavaliere(giannipass);
+                avversario2 = new Cavaliere("");
                 break;
             case 2:
-                avversario2 = new Spadaccino(giannipass);
+                avversario2 = new Spadaccino("");
                 break;
             case 3:
-                avversario2 = new Fante(giannipass);
+                avversario2 = new Fante("");
                 break;
             case 4:
-                avversario2 = new Heavy(giannipass);
+                avversario2 = new Heavy("");
                 break;
             case 5:
-                avversario2 = new Lanciere(giannipass);
+                avversario2 = new Lanciere("");
                 break;
             case 6:
-                avversario2 = new Alabardiere(giannipass);
+                avversario2 = new Alabardiere("");
                 break;
             case 7:
-                avversario2 = new Mercenario(giannipass);
+                avversario2 = new Mercenario();
                 break;
         }
+//nemico 3
+    randval=rand()%7+1;
+    switch(randval) {
+            case 1:
+                avversario3 = new Cavaliere("");
+                break;
+            case 2:
+                avversario3 = new Spadaccino("");
+                break;
+            case 3:
+                avversario3 = new Fante("");
+                break;
+            case 4:
+                avversario3 = new Heavy("");
+                break;
+            case 5:
+                avversario3 = new Lanciere("");
+                break;
+            case 6:
+                avversario3 = new Alabardiere("");
+                break;
+            case 7:
+                avversario3 = new Mercenario("");
+                break;
+        }
+
     cout<<endl<<endl;
     match(avversario1);
     if(player->HP>0) {
-        cout<<"Finale\n"<<endl;
-        cout<<"\n1. "<<player->getname();
-        cout<<"\n2. "<<giannipass<<endl<<endl;
+        listanomi.erase(listanomi.begin()+1);
+        cout<<"Semifinale\n"<<endl;
+        randval=rand()%(2-1+1)+1;
+        listanomi.erase(listanomi.begin()+randval);
+        randval=rand()%(3-2+1)+2;
+        listanomi.erase(listanomi.begin()+randval);
+        randval=rand()%(5-4+1)+4;
+        listanomi.erase(listanomi.begin()+randval);
+
+        peop/=2;
+        for(int i = 0; i<peop; i++) {
+            cout<<i+1<<". "<<listanomi[i]<<endl;
+            if((i+1)%2==0)
+                cout<<endl;
+        }
         cout<<"\nPremi un tasto per procedere. ";
         a = getch();
+        avversario2->setname(listanomi[1]);
         cout<<endl<<endl;
         match(avversario2);
 
         if(player->HP>0){
-            color(6);
-            cout<<"========================================="<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"| 'Congratulazioni a te, o vittorioso!  |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"|   Hai dato prova delle tue virtu' in  |"<<endl;
-            cout<<"|   battaglia e della tua audacia!      |"<<endl;
-            cout<<"|   Per questo motivo l'imperatore ha   |"<<endl;
-            cout<<"|   deciso di concederti il titolo      |"<<endl;
-            cout<<"|   di Duca di Sassonia!                |"<<endl;
-            cout<<"|   Che il futuro possa portare a te,   |"<<endl;
-            cout<<"|   o prode guerriero, le piu' alte     |"<<endl;
-            cout<<"|   glorie!                             |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"|                                       |"<<endl;
-            cout<<"========================================="<<endl;
-            color(7);
-            a=getch();
-            system("CLS");
-
-
+            listanomi.erase(listanomi.begin()+1);
+            randval=rand()%(2-1+1)+1;
+            listanomi.erase(listanomi.begin()+randval);
+            peop/=2;
+            cout<<"Finale\n\n";
+            for(int i = 0; i<peop; i++) {
+                cout<<i+1<<". "<<listanomi[i]<<endl;
+                if((i+1)%2==0)
+                cout<<endl;
+            }
+            avversario3->setname(listanomi[1]);
+            cout<<"\nPremi un tasto per procedere. ";
+                a = getch();
+                cout<<endl<<endl;
+                match(avversario3);
+                if(player->HP>0){
+                    color(6);
+                    cout<<"========================================="<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"| 'Congratulazioni a te, o vittorioso!  |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"|   Hai dato prova delle tue virtu' in  |"<<endl;
+                    cout<<"|   battaglia e della tua audacia!      |"<<endl;
+                    cout<<"|   Per questo motivo l'imperatore ha   |"<<endl;
+                    cout<<"|   deciso di concederti il titolo      |"<<endl;
+                    cout<<"|   di Duca di Sassonia!                |"<<endl;
+                    cout<<"|   Che il futuro possa portare a te,   |"<<endl;
+                    cout<<"|   o prode guerriero, le piu' alte     |"<<endl;
+                    cout<<"|   glorie!                             |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"|                                       |"<<endl;
+                    cout<<"========================================="<<endl;
+                    color(7);
+                    a=getch();
+                    system("CLS");
+                }
         }
     }
     cout<<"================================================================================="<<endl<<"|";
