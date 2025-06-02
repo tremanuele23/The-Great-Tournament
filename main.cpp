@@ -16,9 +16,9 @@ int main()
     cin.ignore();
     system("CLS");
     if(tutorial) {
-        color(6);  cout<<"INFORMAZIONI UTILI\n\n\n"; color(7);
-        cout<<"Questo gioco e' un RPG basato su combattimenti a turni tra te e guerrieri controllati dalla CPU.\n\n";
-        cout<<"Quando crei il tuo personaggio, potrai scegliere tra 7 classi diverse, ciascuna delle quali ha i suoi vantaggi e svantaggi.\n\n";
+        color(6);  cout<<"\t\tINFORMAZIONI UTILI\n\n\n"; color(7);
+        cout<<"Questo gioco e' un RPG a turni.\n\n";
+        cout<<"Per creare il tuo personaggio, potrai scegliere tra 7 classi diverse, ciascuna delle quali ha i suoi vantaggi e svantaggi.\n\n";
         cout<<"Ogni giocatore dispone di un inventario, che alla creazione del personaggio e' ovviamente vuoto, e inizia a giocare con un arma di default che dipende dalla classe scelta.\n\n";
         cout<<"Quando attacchi, infliggerai al nemico un colpo dal valore pari al danno dell'arma che impugni + un valore CASUALE generato in un intervallo i cui estremi cambiano per ciascuna classe.\n\n";
         cout<<"Non c'e' molto altro da dire, avrai tutte le informazioni che ti serviranno per la scelta nella schermata successiva.\n";
@@ -94,11 +94,13 @@ case 7:
     cout<<"|                               |"<<endl;
     cout<<"|                               |"<<endl;
     cout<<"| L'Imperatore invita te ed     |"<<endl;
-    cout<<"| altri III valorosi uomini     |"<<endl;
-    cout<<"| d'arme a prender parte al     |"<<endl;
-    cout<<"| Torneo che sancira' il degno  |"<<endl;
-    cout<<"| erede al trono del ducato     |"<<endl;
-    cout<<"| di Sassonia!                  |"<<endl;
+    cout<<"| altri valorosi uomini d'arme  |"<<endl;
+    cout<<"| a prender parte al Torneo     |"<<endl;
+    cout<<"| che sancira' chi tra gli VIII |"<<endl;
+    cout<<"| migliori soldati delle vaste  |"<<endl;
+    cout<<"| terre Imperiali sara' il      |"<<endl;
+    cout<<"| degno erede del Feudo di      |"<<endl;
+    cout<<"| Aurocastro!                   |"<<endl;
     cout<<"|                               |"<<endl;
     cout<<"| Vieni a reclamare la tua      |"<<endl;
     cout<<"| gloria, a dimostrare          |"<<endl;
@@ -262,7 +264,9 @@ case 7:
                     cout<<"|   battaglia e della tua audacia!      |"<<endl;
                     cout<<"|   Per questo motivo l'imperatore ha   |"<<endl;
                     cout<<"|   deciso di concederti il titolo      |"<<endl;
-                    cout<<"|   di Duca di Sassonia!                |"<<endl;
+                    cout<<"|   di Duca di Aurocastro, con il       |"<<endl;
+                    cout<<"|   diritto a tutti i suoi vigneti,     |"<<endl;
+                    cout<<"|   il suo bestiame ed il mare pescoso! |"<<endl;
                     cout<<"|   Che il futuro possa portare a te,   |"<<endl;
                     cout<<"|   o prode guerriero, le piu' alte     |"<<endl;
                     cout<<"|   glorie!                             |"<<endl;
