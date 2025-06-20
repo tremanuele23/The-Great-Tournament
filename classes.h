@@ -51,9 +51,8 @@ public:
     Cavaliere(string nome): Soldier(nome, Spada_e_Scudo, 180, 15, -10) {
         tone = 9;
     }
-
      string battlecry() {
-        return "Per la gloria del mio re, prendi questo!!!";
+        return "Per la gloria del mio re, prendi questo!";
     }
     string type() {return "Cavaliere";}
 
@@ -76,7 +75,7 @@ public:
     }
 
      string battlecry() {
-        return "La mia lama ti annientera'!!!";
+        return "La mia lama ti annientera'!";
     }
     string type() {return "Spadaccino";}
 };
@@ -97,7 +96,7 @@ public:
     }
 
      string battlecry() {
-        return "Questo attacco mi condurra' alla vittoria!!!";
+        return "Questo attacco mi condurra' alla vittoria!";
     }
     string type() {return "Fante";}
 };
@@ -118,7 +117,7 @@ public:
     }
 
      string battlecry() {
-        return "Il mio prossimo colpo sara' l'ultimo!!!";
+        return "Il mio prossimo colpo sara' l'ultimo!";
     }
     string type() {return "Alabardiere";}
 };
@@ -137,7 +136,7 @@ public:
     Heavy(string nome): Soldier(nome, Warhammer, 100, 0, -20) {
         tone = 11;
     }
-    string battlecry() {return "Ti schiaccero' come un insetto!!!";}
+    string battlecry() {return "Ti schiaccero' come un insetto!";}
     string type() {return "Combattente Pesante";}
 };
 
@@ -155,7 +154,7 @@ public:
     Lanciere(string nome): Soldier(nome, Lancia, 140, 15, -5) {
         tone = 5;
     }
-    string battlecry() {return "Sentirai la mia lancia persino prima di vedermi!!!";}
+    string battlecry() {return "Sentirai la mia lancia persino prima di vedermi!";}
     string type() {return "Lanciere";}
 };
 
@@ -173,7 +172,7 @@ public:
     Mercenario(string nome): Soldier(nome, Dagger, 150, 25, 10) {
         tone = 12;
     }
-    string battlecry() {return "La tua fine sara' la mia fortuna!!!";}
+    string battlecry() {return "La tua fine sara' la mia fortuna!";}
     string type() {return "Mercenario";}
 };
 
@@ -187,19 +186,26 @@ void match(Soldier* s2) {
     int consdim = player->consumabili.size();
     int a;
     system("CLS");
-    cout<<player->getname()<< " ("<<player->type()<<") vs " <<s2->getname()<<" ("<<s2->type()<<")\n"<<endl;
-    cout<<"\nCHE LO SCONTRO ABBIA INIZIO!\n\nPremi un tasto per continuare: ";
+    digita(player->getname()+ " ("+player->type()+") vs " +s2->getname()+" ("+s2->type()+")\n",1);
+    Sleep(600);
+    cout<<"\nCHE LO SCONTRO ABBIA INIZIO!\n\n";
+    Sleep(600);
+    digita("Premi un tasto per continuare: ");
     a = getch();
     system("CLS");
     do {
         chosing:
-            cout<<"Turno di "<<player->getname()<<".\n\n";
+            cout<<"Turno di "<<player->getname()<<"\n\n";
+            Sleep(700);
             player->msg(player->introduction());
-            cout<<"\nScegli cosa fare:\n1.Attacca (Arma equipaggiata: "<<player->getCWname()<<", di danni "<<player->getCWdamage()<<")\n";
-            cout<<"2.Seleziona un'altra arma\n3.Utilizza una cura\n\n";
+            cout<<"\nScegli cosa fare:";
+            cout<<"\n1.Attacca (Arma equipaggiata: "<<player->getCWname()<<", di danni "<<player->getCWdamage()<<")\n";
+            cout<<"2.Seleziona un'altra arma";
+            cout<<"\n3.Utilizza una cura\n\n";
+            Sleep(700);
             int scelta;
             do {
-                cout<<"Scelta: ";
+                digita("Scelta: ");
                 cin>>scelta;
                 cin.ignore();
             }
@@ -215,7 +221,7 @@ void match(Soldier* s2) {
                     player->showweaps();
                     int x;
                     do {
-                        cout<<"\nQuale di queste armi vuoi equipaggiare? Inserisci il numero corrispondente (o -1 per tornare indietro): ";
+                        digita("\nQuale di queste armi vuoi equipaggiare? Inserisci il numero corrispondente (o -1 per tornare indietro): ");
                         cin>>x;
                         cin.ignore();
                     }
@@ -230,7 +236,7 @@ void match(Soldier* s2) {
                     }
                 }
                 else {
-                    cout<<"Non hai altre armi, dovrai utilizzare quella che gia' hai in mano!\nPremi un tasto per continuare il tuo turno. ";
+                    digita("Non hai altre armi, dovrai utilizzare quella che gia' hai in mano!\nPremi un tasto per continuare il tuo turno. ");
                     a = getch();
                     system("CLS");
                     goto chosing;
@@ -242,7 +248,7 @@ void match(Soldier* s2) {
                     player->showconsumabili();
                     int x;
                     do {
-                        cout<<"\nQuale di queste cure vuoi utilizzare? Inserisci il numero corrispondente (o -1 per tornare indietro): ";
+                        digita("\nQuale di queste cure vuoi utilizzare? Inserisci il numero corrispondente (o -1 per tornare indietro): ");
                         cin>>x;
                         cin.ignore();
                     }
@@ -258,31 +264,35 @@ void match(Soldier* s2) {
                     }
                 }
                 else {
-                    cout<<"A quanto pare non hai cure!\nPremi un tasto per continuare il tuo turno. ";
+                    digita("A quanto pare non hai cure!\nPremi un tasto per continuare il tuo turno. ");
                     a = getch();
                     system("CLS");
                     goto chosing;
                 }
                 break;
             case 250445:
-                cout<<"Codice sviluppatore utilizzato.\n";
+                digita("Codice sviluppatore utilizzato.",1);
                 s2->HP = 0;
                 break;
             case 230507:
-                cout<<"Codice sviluppatore utilizzato.\n";
+                digita("Codice sviluppatore utilizzato.",1);
                 player->HP = 0;
                 break;
             }
 
 
-        cout<<"\n\nClicca un tasto per procedere. ";
+        cout<<"\n\n";
+        digita("Clicca un tasto per procedere. ");
         a = getch();
         system("CLS");
         if(s2->HP<=0||player->HP<=0)
             break;
-        cout<<"Turno di "<<s2->getname()<<".\n\n";
+        cout<<"Turno di "+s2->getname()+".\n\n";
+        Sleep(200);
         s2->msg(s2->introduction());
-        cout<<endl<<endl<<endl<<s2->getname()<<" attacca!\n\n";
+        cout<<endl<<endl<<endl;
+        Sleep(700);
+        cout<<s2->getname()<<" attacca!\n\n";
         s2->fight(player);
 
         cout<<"\n\nClicca un tasto per procedere. ";
@@ -292,54 +302,60 @@ void match(Soldier* s2) {
     }
     while (s2->HP>0&&player->HP>0);
 
-    cout<<"\tDUELLO FINITO.\nIl vincitore e' ";
+    cout<<"\tDUELLO FINITO.\n"; Sleep(700);
+    digita("Il vincitore e' "); Sleep(700);
     if(s2->HP>0) {
-        s2->msg(s2->getname()+"!!!!!");
+        s2->msg1(s2->getname()+"!");
     }
     if(player->HP>0) {
-        player->msg(player->getname()+"!!!!!");
+        player->msg1(player->getname()+"!");
     }
-
-    cout<<"\n\nClicca un tasto per procedere. ";
+    Sleep(700);
+    cout<<"\n\n";
+    digita("Clicca un tasto per procedere. ");
     a = getch();
-
-        system("CLS");
+    system("CLS");
     if(player->HP>0) {
         player->restoreHP();
+        Sleep(700);
         Consumabile reward = allcures[rand()%7];
-        cout<<"\n\nVuoi raccogliere l'arma dell'avversario?\n\n";
-        s2->getCW().showstats();
-        cout<<"\t1: La prendi.\n\t0: Non la prendi.\n\nScelta: ";
+        digita("Vuoi raccogliere l'arma dell'avversario? (Arma: " + s2->getCW().getname() + "; Danno: "+ to_string(s2->getCW().getdamage())+")");
+        Sleep(700);
+        cout<<"\n\n\t1: La prendi.\n\t0: Non la prendi.\n\nScelta: ";
         bool willtake;
         cin>>willtake;
         cin.ignore();
         if(willtake){
             player->add_to_inventory(s2->getCW());
-            cout<<"\nHai aggiunto l'arma all'inventario.\n";
+            digita("\nHai aggiunto l'arma all'inventario.\n");
         }
         else {
-            cout<<"\nDecidi di non prenderla.\n";
+            digita("\nDecidi di non prenderla.\n");
         }
-        cout<<"\n\n\n\n\nNoti che tra gli oggetti dell'avversario e' presente "<<reward.getname()<<" (capacita' curativa: "<<reward.getHPboost()<<")\nDecidi cosa fare.\n";
+        cout<<"\n\n\n";
+        Sleep(900);
+        digita("Tra gli oggetti dell'avversario trovi "+reward.getname()+" (capacita' curativa: "+to_string(reward.getHPboost())+")\n\n");
+        Sleep(700);
         cout<<"\n\t1: La prendi.\n\t0: Non la prendi.\n\nScelta: ";
         cin>>willtake;
         cin.ignore();
         if(willtake){
             player->add_to_inventory(reward);
-            cout<<"\nHai aggiunto l'oggetto all'inventario.\n";
+            digita("\nHai aggiunto l'oggetto all'inventario.\n");
         }
         else {
-            cout<<"\nDecidi di non prendere l'oggetto.\n";
+            digita("\nDecidi di non prendere l'oggetto.\n");
         }
-        cout<<"Premi un tasto per continuare. ";
+        digita("Premi un tasto per continuare. ");
         a = getch();
     }
     else
     {
         color(4);
         cout<<"\tHAI PERSO!\n\n\n\n";
+        Sleep(100);
         color(7);
-        cout<<"Questa volta e' andata male...chissa', magari una prossima volta sarai piu' fortunato/a!\n\n";
+        digita("Questa volta e' andata male...chissa', magari una prossima volta sarai piu' fortunato/a!\n\n"); Sleep(700);
         cout<<"Premi un tasto per continuare. ";
         a = getch();
     }
