@@ -30,13 +30,12 @@ protected:
     Weapon cw; //current weapon
     string name;
     int tone;
-    int maxHP;
-    int low_mod;
-    int up_mod;
+    float maxHP;
+    float factor;
 public:
     vector<Consumabile> consumabili;
     vector<Weapon> weaps;
-    int HP;
+    float HP;
     Soldier() {
         maxHP = 100;
         HP = maxHP;
@@ -44,16 +43,14 @@ public:
         cw=noweapon;
         weaps.empty();
         consumabili.empty();
-        low_mod = 0;
-        up_mod = 0;
+        factor = 0;
     }
-    Soldier(string n, Weapon w, int max, int u, int l) {
+    Soldier(string n, Weapon w, int max, float f) {
         maxHP = max;
         HP = maxHP;
         name = n;
         cw = w;
-        up_mod = u;
-        low_mod = l;
+        factor = f;
         weaps.empty();
         consumabili.empty();
 
@@ -128,7 +125,7 @@ public:
     string getCWname(){return cw.getname();}
     int getCWdamage() {return cw.getdamage();}
     string getname() {return name;}
-    int getHP() {return HP;}
+    float getHP() {return HP;}
 
     void say(string sentence) {
         char a;
@@ -138,10 +135,23 @@ public:
         digita(sentence, 1);
         Sleep(400);
         color(7);
-
-
     }
-     void msg(string sentence) {
+    void setMaxHP(int x) {
+        maxHP=x;
+    }
+    float getMaxHP() {
+        return maxHP;
+    }
+
+    void setFactor(int x) {
+        factor=x;
+    }
+    float getFactor() {
+        return factor;
+    }
+
+
+    void msg(string sentence) {
         color(tone);
         cout<<sentence<<endl;
         color(7);
@@ -158,18 +168,26 @@ public:
 
     virtual string type() {return "Soldato";}
     string introduction() {
-        return "Classe: " + type() + "\nNome: "+name+".\nArma equipaggiata: "+cw.getname()+", danno: "+to_string(cw.getdamage())+"\nHP: "+to_string(HP)+"/"+to_string(maxHP);
+        return "Classe: " + type() + "\nNome: "+name+".\nArma equipaggiata: "+cw.getname()+", danno: "+real_tostring(cw.getdamage())+"\nHP: "+real_tostring(HP)+"/"+real_tostring(maxHP);
     }
 
     virtual string battlecry() = 0;
 
-    void fight(Soldier *target) {
+    void fight(Soldier *target, bool isPlayersTurn) {
         color(tone);
+        float froppo; int clicks;
         if(cw.getdamage()!=noweapon.getdamage()) {
             say(battlecry());
-            int froppo = cw.getdamage()+rand()%(up_mod-low_mod+1)+low_mod;
+            if(isPlayersTurn) {
+                clicks = getclicks();
+                clearInputBuffer();
+                if (clicks>10) clicks=10;
+                froppo = cw.getdamage()*clicks*factor;
+            }
+            else
+                froppo = cw.getdamage()*(rand()%(11))*factor;
             target->HP -= froppo;
-            digita("["+name+" causa a "+target->getname()+" un danno di "+to_string(froppo)+" punti!]\n");
+            digita("["+name+" causa a "+target->getname()+" un danno di "+real_tostring(froppo)+" punti!]\n");
         }
         else
             cout<<"[Nessuna arma equipaggiata!]\n\n";
@@ -186,7 +204,7 @@ public:
                 HP+=c.getHPboost();
             else if(HP!=maxHP) {HP=maxHP;}
             Sleep(100);
-            digita("\nHP: "+to_string(HP)+"/"+to_string(maxHP),1);
+            digita("\nHP: "+real_tostring(HP)+"/"+real_tostring(maxHP),1);
             remove_from_inventory(c);
         }
         else {
