@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1739300060 source:c:\users\emanu\desktop\coding\the great tournament\main.cpp
+	"classes.h"
+
+1739981107 c:\users\emanu\desktop\coding\the great tournament\classes.h
+	"soldier.h"
+
+1739981080 c:\users\emanu\desktop\coding\the great tournament\soldier.h
+	"colors.h"
+	"item.h"
+	<vector>
+	<time.h>
+
+1736899696 c:\users\emanu\desktop\coding\the great tournament\colors.h
+	<conio.h>
+	<windows.h>
+	<stdlib.h>
+	<unistd.h>
+
+1739570503 c:\users\emanu\desktop\coding\the great tournament\item.h
+	<iostream>
+	<string>
+
+1748442440 source:c:\users\emanu\desktop\coding\c-c++\freaky stuff\the great tournament (by tremanuele23)\the great tournament\main.cpp
+	"classes.h"
+
+1748303867 c:\users\emanu\desktop\coding\c-c++\freaky stuff\the great tournament (by tremanuele23)\the great tournament\classes.h
+	"soldier.h"
+
+1739984680 c:\users\emanu\desktop\coding\c-c++\freaky stuff\the great tournament (by tremanuele23)\the great tournament\soldier.h
+	"colors.h"
+	"item.h"
+	<vector>
+	<time.h>
+
+1736903296 c:\users\emanu\desktop\coding\c-c++\freaky stuff\the great tournament (by tremanuele23)\the great tournament\colors.h
+	<conio.h>
+	<windows.h>
+	<stdlib.h>
+	<unistd.h>
+
+1739574103 c:\users\emanu\desktop\coding\c-c++\freaky stuff\the great tournament (by tremanuele23)\the great tournament\item.h
+	<iostream>
+	<string>
+
+1755444568 source:c:\users\emanu\desktop\the great tournament\main.cpp
+	"classes.h"
+
+1755444896 c:\users\emanu\desktop\the great tournament\classes.h
+	"soldier.h"
+
+1755357122 c:\users\emanu\desktop\the great tournament\soldier.h
+	"colors.h"
+	"item.h"
+	<vector>
+	<time.h>
+
+1755443962 c:\users\emanu\desktop\the great tournament\colors.h
+	<conio.h>
+	<stdlib.h>
+	<unistd.h>
+	<chrono>
+	<iomanip>
+	<cmath>
+	"sounds.h"
+
+1749293249 c:\users\emanu\desktop\the great tournament\item.h
+	"colors.h"
+
+1755363395 c:\users\emanu\desktop\the great tournament\sounds.h
+	<windows.h>
+	<mmsystem.h>
+	<iostream>
+	<string>
+

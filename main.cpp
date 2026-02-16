@@ -7,7 +7,6 @@ int main()
 {
 
     srand(time(0));
-    int killcount=0;
     cout<<"=================================================================================="<<endl<<"|";
     color(6);
     cout<<"\t\t\t\tTHE GREAT TOURNAMENT\t\t\t\t ";
@@ -203,7 +202,6 @@ int main()
         cout<<endl<<endl;
         match(avversario1, "battle.wav");
         if(player->HP>0) {
-            if(avversario1->HP<=0) {killcount++;}
             post(avversario1);
             system("CLS");
             listanomi.erase(listanomi.begin()+1);
@@ -254,7 +252,6 @@ int main()
             match(avversario2, "battle.wav");
 
             if(player->HP>0){
-                if(avversario2->HP<=0) {killcount++;}
                 post(avversario2);
                 listanomi.erase(listanomi.begin()+1);
                 randval=rand()%(2-1+1)+1;
@@ -299,7 +296,6 @@ int main()
                 cout<<endl<<endl;
                 match(avversario3, "finalBattle.wav");
                 if(player->HP>0){
-                    if(avversario3->HP<=0) {killcount++;}
                     post(avversario3);
                     system("CLS");
                     PlaySound(NULL, 0, NULL);

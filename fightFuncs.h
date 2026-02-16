@@ -6,7 +6,6 @@ Soldier *player;
 
 void match(Soldier* s2, char track[]) {
     bool battleFinished=false;
-    bool enemyCanBeSpared=false;
     PlaySound(TEXT(track), NULL, SND_FILENAME| SND_ASYNC | SND_LOOP);
     int weapdim = player->weaps.size();
     int consdim = player->consumabili.size();
@@ -29,10 +28,6 @@ void match(Soldier* s2, char track[]) {
             cout<<"\n1.Attacca (Arma equipaggiata: "<<player->getCWname()<<", di danni "<<player->getCWdamage()<<")";
             cout<<"\n2.Seleziona un'altra arma";
             cout<<"\n3.Utilizza una cura";
-            if(s2->getHP()<=s2->getMaxHP()*0.1) {
-                    enemyCanBeSpared=true;
-                    cout<<"\n4.Risparmia";
-            }
             cout<<endl<<endl<<endl;
             Sleep(700);
             do {
@@ -106,20 +101,9 @@ void match(Soldier* s2, char track[]) {
                     goto chosing;
                 }
                 break;
-
-            case 4:
-                if(enemyCanBeSpared==false){
-                    system("CLS");
-                    goto chosing;
-                }
-                break;
             case 250445:
                 digita("Codice sviluppatore utilizzato.",1);
                 s2->HP = 0;
-                break;
-            case 2512800:
-                enemyCanBeSpared=true;
-                digita("Codice sviluppatore utilizzato.",1);
                 break;
             case 230507:
                 digita("Codice sviluppatore utilizzato.",1);
@@ -133,7 +117,7 @@ void match(Soldier* s2, char track[]) {
         clearInputBuffer();
         _getch();
         system("CLS");
-        if(s2->HP<=0||player->HP<=0||enemyCanBeSpared&&(scelta==4||scelta==2512800)) {
+        if(s2->HP<=0||player->HP<=0) {
             battleFinished=true;
             break;
         }
@@ -154,10 +138,10 @@ void match(Soldier* s2, char track[]) {
     PlaySound(NULL, 0, 0);
     cout<<"\tDUELLO FINITO.\n"; Sleep(700);
     digita("Il vincitore e' "); Sleep(1500);
-    if(s2->HP>0&&(scelta!=4&&scelta!=2512800)) {
+    if(s2->HP>0) {
         s2->msg1(s2->getname()+"!");
     }
-    if(player->HP>0||((scelta==4||scelta==2512800)&&enemyCanBeSpared))
+    if(player->HP>0)
         player->msg1(player->getname()+"!");
     Sleep(700);
     cout<<"\n\n";

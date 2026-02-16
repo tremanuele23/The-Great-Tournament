@@ -18,7 +18,6 @@ Weapon Alabarda("Alabarda", 180);
 Weapon Warhammer("Martello da guerra", 210);
 Weapon Lancia("Lancia", 135);
 Weapon Dagger("Spada corta", 45);
-Weapon Claymore ("Claymore", 240);
 
 Consumabile it_sucks("Mela", 60);
 Consumabile meh("Stufato di carciofi", 80);
@@ -165,21 +164,5 @@ public:
 };
 
 
-class Boss: public Soldier {
-public:
-    Boss() {
-        name=" ";
-        cw=noweapon;
-        tone= 8;
-        maxHP=1000;
-        HP=maxHP;
-        factor=0.5;
-    }
-    Boss(string nome): Soldier(nome, Claymore, 1000, 0.5)  {
-        tone=8;
-    }
-    string battlecry() {return "Preparati alla mia venuta, verme!";}
-    string type() {return "Guerriero d'Alto Rango";}
-};
 
 #endif // ITEM_H_INCLUDED
